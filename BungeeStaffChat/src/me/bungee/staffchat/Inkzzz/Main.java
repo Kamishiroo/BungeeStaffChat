@@ -15,6 +15,7 @@ public class Main extends Plugin {
 	public void onEnable() {
 		instance = this;
 		conf.setupConfig();
+		loadCommands();
 	}
 	
 	void loadCommands() {
