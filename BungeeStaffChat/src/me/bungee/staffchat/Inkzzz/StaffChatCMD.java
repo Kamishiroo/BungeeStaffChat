@@ -28,9 +28,12 @@ public class StaffChatCMD extends Command {
 				if (on.hasPermission(perm)) {
 					on.sendMessage(ChatColor.translateAlternateColorCodes(
 							'&',
-							conf.getConfig().getString("Format")
+							conf.getConfig()
+									.getString("Format")
 									.replace("%player%", p.getName())
-									.replace("%message%", getMessage(args))));
+									.replace("%message%", getMessage(args))
+									.replace("%server%",
+											p.getServer().getInfo().getName().toUpperCase())));
 				}
 			}
 			return;
