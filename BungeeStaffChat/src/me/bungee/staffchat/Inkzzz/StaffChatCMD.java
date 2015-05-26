@@ -9,9 +9,10 @@ import net.md_5.bungee.api.plugin.Command;
 public class StaffChatCMD extends Command {
 
 	Config conf = new Config();
+	private static final String perm = "staffchat.use";
 
 	public StaffChatCMD() {
-		super("staffchat", "staffchat.use", new String[] { "sc" });
+		super("staffchat", perm, new String[] { "sc" });
 	}
 
 	@SuppressWarnings("deprecation")
@@ -24,17 +25,15 @@ public class StaffChatCMD extends Command {
 			return;
 		} else {
 			for (ProxiedPlayer on : ProxyServer.getInstance().getPlayers()) {
-				if (on.hasPermission("staffchat.use")) {
+				if (on.hasPermission(perm)) {
 					on.sendMessage(ChatColor.translateAlternateColorCodes(
 							'&',
 							conf.getConfig()
 									.getString("Format")
 									.replace("%player%", p.getName())
 									.replace("%message%", getMessage(args))
-									.replace(
-											"%server%",
-											p.getServer().getInfo().getName()
-													.toUpperCase())));
+									.replace("%server%",
+											p.getServer().getInfo().getName().toUpperCase())));
 				}
 			}
 			return;
