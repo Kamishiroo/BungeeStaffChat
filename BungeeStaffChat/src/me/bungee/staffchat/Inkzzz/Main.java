@@ -4,7 +4,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 public class Main extends Plugin {
 
-	private Config conf;
+	private Config conf = new Config();
 	
 	private static Main instance;
 
